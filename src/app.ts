@@ -1,15 +1,11 @@
-/**
- * Required External Modules
- */
+// Reqd External Modules
 
 import express from 'express'
 import * as dotenv from 'dotenv'
 import cors from 'cors'
 import helmet from 'helmet'
 
-/**
- * App Variables
- */
+// App Vars
 
 dotenv.config()
 
@@ -21,6 +17,14 @@ const PORT: number = parseInt(process.env.PORT as string, 10)
 
 const app = express()
 
+// App Config
+
+app.use(helmet())
+app.use(cors())
+app.use(express.json())
+
+// Server Activation
+
 app.get('/', (req, res) => {
   res.send('The sedulous hyena ate the antelope!')
 })
@@ -31,14 +35,4 @@ app.listen(PORT, err => {
   return console.log(`server is listening on ${PORT}`)
 })
 
-/**
- *  App Configuration
- */
-
-/**
- * Server Activation
- */
-
-/**
- * Webpack HMR Activation
- */
+// Webpack Activation
