@@ -22,7 +22,20 @@ function filterFunction(userInput: string): number | null {
 
   // loop through array of user input values and assign happy and sad
 
-  inputAsArray.forEach(element => console.log('DEBUGGING' + element))
+  inputAsArray.forEach(element => {
+    // if the element is within the happyValues list, add to the count happy values variable
+
+    happyValues.indexOf(element) > -1 ? countHappyValues++ : null
+
+    // if the element is within the sadValues list, add to the count happy values variable
+
+    sadValues.indexOf(element) > -1 ? countSadValues++ : null
+
+    console.log('DEBUGGING HAPPY VALUES' + countHappyValues)
+    console.log('DEBUGGING HAPPY VALUES' + countSadValues)
+
+    // console.log('DEBUGGING' + element)
+  })
 
   return null
 }

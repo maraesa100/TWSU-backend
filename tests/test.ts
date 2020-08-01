@@ -15,6 +15,18 @@ describe('filterFunction', () => {
     expect(result).to.equal(null)
   })
 
+  it('should return with 1', () => {
+    const result = filterFunction('I am delighted. This is not spelling error')
+    expect(result).to.equal(1)
+  })
+
+  it('should return with 2', () => {
+    const result = filterFunction(
+      'I am delighted. So delighted. This is not spelling error'
+    )
+    expect(result).to.equal(2)
+  })
+
   it('should return with 100', () => {
     const result = filterFunction(
       'I am delight. I am joy. I am not miserable or sad. '
