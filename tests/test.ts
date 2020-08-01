@@ -3,34 +3,32 @@ import { expect } from 'chai'
 import 'mocha'
 
 describe('filterFunction', () => {
-  it('should return with 200 - or 200% more happy words than sad words', () => {
+  it('should return with true as there are two valid words and one invalid one', () => {
     const result = filterFunction(
-      'Hey!!!!!, I am feeling  a little sad, but I am delighted at this delightful meal'
+      'I was glad to go to the beach. Very glad. Even though it was a miserable day'
     )
-    expect(result).to.equal(200)
+    expect(result).to.equal(true)
   })
 
-  it('should return with unknown', () => {
+  it('should return with null as there are no valid words', () => {
     const result = filterFunction('I am delighte. This is a spelling error')
     expect(result).to.equal(null)
   })
 
-  it('should return with 1', () => {
-    const result = filterFunction('I am delighted. This is not spelling error')
-    expect(result).to.equal(1)
+  it('should return with true as there is 1 happy word', () => {
+    const result = filterFunction('I am delighted')
+    expect(result).to.equal(true)
   })
 
-  it('should return with 2', () => {
-    const result = filterFunction(
-      'I am delighted. So delighted. This is not spelling error'
-    )
-    expect(result).to.equal(2)
+  it('should return with true as there is 1 sad word', () => {
+    const result = filterFunction('I feel such sorrow')
+    expect(result).to.equal(false)
   })
 
-  it('should return with 100', () => {
+  it('should return with unknown as there are equal sad and unhappy words', () => {
     const result = filterFunction(
       'I am delight. I am joy. I am not miserable or sad. '
     )
-    expect(result).to.equal(100)
+    expect(result).to.equal(null)
   })
 })
