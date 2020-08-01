@@ -43,7 +43,6 @@ app.post('/api/v1/wordfilter', (req, res) => {
         });
     }
     const returnedValue = filterFunction_1.default(req.body.description);
-    console.log('Endpoint Successfully Hit');
     return res.status(201).send({
         success: 'true',
         returnedValue

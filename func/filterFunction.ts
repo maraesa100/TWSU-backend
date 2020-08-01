@@ -2,10 +2,10 @@ import happyValues from '../db/db-happy'
 import sadValues from '../db/db-sad'
 import { KeyObjectType } from 'crypto'
 
-// function
-// create counter arrays - sad array - happy array
-// compare percentages in the array
-// return string or binary values
+// The following function accepts a string, strips it, and turns it into an array
+// It then determines whether the sentences in the string make it 'happy' or 'sad'
+// It returns an object: a string with 'happy', 'sad', or 'null' and a
+// number OR null entry showing how happy or sad the sentence is on a scale
 
 function filterFunction(userInput: string): any {
   //force to lowercase, remove all punctuation, split into an array of strings

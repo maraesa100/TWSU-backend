@@ -5,10 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_happy_1 = __importDefault(require("../db/db-happy"));
 const db_sad_1 = __importDefault(require("../db/db-sad"));
-// function
-// create counter arrays - sad array - happy array
-// compare percentages in the array
-// return string or binary values
+// The following function accepts a string, strips it, and turns it into an array
+// It then determines whether the sentences in the string make it 'happy' or 'sad'
+// It returns an object: a string with 'happy', 'sad', or 'null' and a
+// number OR null entry showing how happy or sad the sentence is on a scale
 function filterFunction(userInput) {
     //force to lowercase, remove all punctuation, split into an array of strings
     var inputAsArray = userInput
@@ -25,15 +25,38 @@ function filterFunction(userInput) {
         // if the element is within the sadValues list, add to the count happy values variable
         db_sad_1.default.indexOf(element) > -1 ? countSadValues++ : null;
     });
-    // calculate ratios
+    // calculate ratios & return object
+    var returnableObject = {
+        happyOrSad: null,
+        numericalValue: null
+    };
+    // handling ratio calculation if 0 or only 1 word is provided
+    if (countHappyValues === 1 && countSadValues === 0) {
+        returnableObject.happyOrSad = 'happy';
+        returnableObject.numericalValue = countHappyValues / countSadValues;
+        return returnableObject;
+    }
+    else if (countHappyValues === 0 && countSadValues === 0) {
+        return returnableObject;
+    }
+    else if (countHappyValues === 0 && countSadValues === 1) {
+        returnableObject.happyOrSad = 'sad';
+        returnableObject.numericalValue = countSadValues / countHappyValues;
+        return returnableObject;
+    }
+    // handling all other cases where words are provided
     if (countHappyValues / countSadValues >= 1.5) {
-        return true;
+        returnableObject.happyOrSad = 'happy';
+        returnableObject.numericalValue = countHappyValues / countSadValues;
+        return returnableObject;
     }
     else if (countHappyValues / countSadValues <= 0.5) {
-        return false;
+        returnableObject.happyOrSad = 'sad';
+        returnableObject.numericalValue = countSadValues / countHappyValues;
+        return returnableObject;
     }
     else {
-        return null;
+        return returnableObject;
     }
 }
 exports.default = filterFunction;
