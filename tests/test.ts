@@ -3,14 +3,14 @@ import { expect } from 'chai'
 import 'mocha'
 
 describe('filterFunction', () => {
-  it('should return with true as there are two valid words and one invalid one', () => {
+  it('should return with true as there are 2 happy words and 1 sad word', () => {
     const result = filterFunction(
       'I was glad to go to the beach. Very glad. Even though it was a miserable day'
     )
     expect(result).to.equal(true)
   })
 
-  it('should return with null as there are no valid words', () => {
+  it('should return with null as there are 0 valid words', () => {
     const result = filterFunction('I am delighte. This is a spelling error')
     expect(result).to.equal(null)
   })
@@ -25,7 +25,7 @@ describe('filterFunction', () => {
     expect(result).to.equal(false)
   })
 
-  it('should return with unknown as there are equal sad and unhappy words', () => {
+  it('should return with null as there are equal sad and happy words', () => {
     const result = filterFunction(
       'I am delight. I am joy. I am not miserable or sad. '
     )
