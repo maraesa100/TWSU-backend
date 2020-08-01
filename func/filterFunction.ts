@@ -8,9 +8,10 @@ import sadValues from '../db/db-sad'
 // compare percentages in the array
 // return string or binary values
 
-let myAdd: (x: number, y: number) => number = function(
-  x: number,
-  y: number
-): number {
-  return x + y
+let filterFunction: (userInput: string) => string = function(
+  userInput: string
+): string {
+  return 'Sorry there was no input'
 }
+
+export default filterFunction
