@@ -1,12 +1,13 @@
 import happyValues from '../db/db-happy'
 import sadValues from '../db/db-sad'
+import { KeyObjectType } from 'crypto'
 
 // function
 // create counter arrays - sad array - happy array
 // compare percentages in the array
 // return string or binary values
 
-function filterFunction(userInput: string): boolean | null {
+function filterFunction(userInput: string): any {
   //force to lowercase, remove all punctuation, split into an array of strings
   var inputAsArray = userInput
     .toLowerCase()
@@ -30,14 +31,39 @@ function filterFunction(userInput: string): boolean | null {
     sadValues.indexOf(element) > -1 ? countSadValues++ : null
   })
 
-  // calculate ratios
+  // calculate ratios & return object
+
+  var returnableObject = {
+    happyOrSad: null,
+    numericalValue: null
+  }
+
+  // handling ratio calculation if 0 or only 1 word is provided
+
+  if (countHappyValues === 1 && countSadValues === 0) {
+    returnableObject.happyOrSad = 'happy'
+    returnableObject.numericalValue = countHappyValues / countSadValues
+    return returnableObject
+  } else if (countHappyValues === 0 && countSadValues === 0) {
+    return returnableObject
+  } else if (countHappyValues === 0 && countSadValues === 1) {
+    returnableObject.happyOrSad = 'sad'
+    returnableObject.numericalValue = countSadValues / countHappyValues
+    return returnableObject
+  }
+
+  // handling all other cases where words are provided
 
   if (countHappyValues / countSadValues >= 1.5) {
-    return true
+    returnableObject.happyOrSad = 'happy'
+    returnableObject.numericalValue = countHappyValues / countSadValues
+    return returnableObject
   } else if (countHappyValues / countSadValues <= 0.5) {
-    return false
+    returnableObject.happyOrSad = 'sad'
+    returnableObject.numericalValue = countSadValues / countHappyValues
+    return returnableObject
   } else {
-    return null
+    return returnableObject
   }
 }
 
