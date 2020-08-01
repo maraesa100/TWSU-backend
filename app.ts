@@ -6,7 +6,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import bodyParser from 'body-parser'
 
-import filterFunction from '../func/filterFunction'
+import filterFunction from './func/filterFunction'
 
 // App Vars
 
@@ -36,6 +36,8 @@ app.get('/', (req, res) => {
 })
 
 app.post('/api/v1/wordfilter', (req, res) => {
+  console.log('Endpoint Successfully Hit' + req.body.description)
+
   if (!req.body.description) {
     return res.status(400).send({
       success: 'false',
