@@ -5,7 +5,7 @@ import 'mocha'
 describe('filterFunction', () => {
   it('should return with 200 - or 200% more happy words than sad words', () => {
     const result = filterFunction(
-      'I am feeling sad, but I am delighted at this delightful meal'
+      'Hey!!!!!, I am feeling  a little sad, but I am delighted at this delightful meal'
     )
     expect(result).to.equal(200)
   })
