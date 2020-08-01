@@ -28,6 +28,16 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.send('The sedulous hyena ate the antelope!')
 })
+
+app.get('/api/v1/todos', (req, res) => {
+  res.status(200).send({
+    success: 'true',
+    message: 'todos retrieved successfully',
+    //   todos: db
+    todos: 'I am a todo'
+  })
+})
+
 app.listen(PORT, err => {
   if (err) {
     return console.error(err)
