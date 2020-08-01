@@ -28,6 +28,7 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.send('The sedulous hyena ate the antelope!')
 })
+
 app.listen(PORT, err => {
   if (err) {
     return console.error(err)
