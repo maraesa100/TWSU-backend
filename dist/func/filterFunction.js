@@ -27,7 +27,7 @@ function filterFunction(userInput) {
     });
     // calculate ratios & return object
     var returnableObject = {
-        happyOrSad: null,
+        happyOrSad: 'unknown',
         numericalValue: null
     };
     // handling ratio calculation if 0 or only 1 word is provided
@@ -37,7 +37,6 @@ function filterFunction(userInput) {
         return returnableObject;
     }
     else if (countHappyValues === 0 && countSadValues === 0) {
-        returnableObject.numericalValue = null;
         return returnableObject;
     }
     else if (countHappyValues === 0 && countSadValues === 1) {
@@ -59,6 +58,7 @@ function filterFunction(userInput) {
         return returnableObject;
     }
     else {
+        returnableObject.happyOrSad = 'unknown';
         return returnableObject;
     }
 }

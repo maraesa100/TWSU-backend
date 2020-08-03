@@ -34,7 +34,7 @@ function filterFunction(userInput: string): any {
   // calculate ratios & return object
 
   var returnableObject = {
-    happyOrSad: null,
+    happyOrSad: 'unknown',
     numericalValue: null
   }
 
@@ -45,7 +45,6 @@ function filterFunction(userInput: string): any {
     returnableObject.numericalValue = 100
     return returnableObject
   } else if (countHappyValues === 0 && countSadValues === 0) {
-    returnableObject.numericalValue = null
     return returnableObject
   } else if (countHappyValues === 0 && countSadValues === 1) {
     returnableObject.happyOrSad = 'sad'
@@ -66,6 +65,7 @@ function filterFunction(userInput: string): any {
       (countSadValues / (countSadValues + countHappyValues)) * 100
     return returnableObject
   } else {
+    returnableObject.happyOrSad = 'unknown'
     return returnableObject
   }
 }

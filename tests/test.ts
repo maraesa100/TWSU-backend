@@ -10,9 +10,9 @@ describe('filterFunction', () => {
     expect(result.happyOrSad).to.equal('happy')
   })
 
-  it('should return with NULL as there are 0 valid words', () => {
+  it('should return with UNKNOWN as there are 0 valid words', () => {
     const result = filterFunction('I am delighte. This is a spelling error')
-    expect(result.happyOrSad).to.equal(null)
+    expect(result.happyOrSad).to.equal('unknown')
   })
 
   it('should return with HAPPY as there is 1 happy word', () => {
@@ -25,18 +25,11 @@ describe('filterFunction', () => {
     expect(result.happyOrSad).to.equal('sad')
   })
 
-  it('should return with NULL as there are equal sad and happy words', () => {
+  it('should return with UNKNOWN as there are equal sad and happy words', () => {
     const result = filterFunction(
       'I am delight. I am joy. I am not miserable or sad. '
     )
-    expect(result.happyOrSad).to.equal(null)
-  })
-
-  it('should return with NULL as there are equal sad and happy words', () => {
-    const result = filterFunction(
-      'I am delight. I am joy. I am not miserable or sad. '
-    )
-    expect(result.numericalValue).to.equal(null)
+    expect(result.happyOrSad).to.equal('unknown')
   })
 
   it('should return with 2/3 as there are 2 valid sad words, and 1 valid happy word', () => {
