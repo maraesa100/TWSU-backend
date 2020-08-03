@@ -3,32 +3,46 @@ import { expect } from 'chai'
 import 'mocha'
 
 describe('filterFunction', () => {
-  it('should return with true as there are two valid words and one invalid one', () => {
+  it('should return with HAPPY as there are 2 happy words and 1 sad word', () => {
     const result = filterFunction(
       'I was glad to go to the beach. Very glad. Even though it was a miserable day'
     )
-    expect(result).to.equal(true)
+    expect(result.happyOrSad).to.equal('happy')
   })
 
-  it('should return with null as there are no valid words', () => {
+  it('should return with NULL as there are 0 valid words', () => {
     const result = filterFunction('I am delighte. This is a spelling error')
-    expect(result).to.equal(null)
+    expect(result.happyOrSad).to.equal(null)
   })
 
-  it('should return with true as there is 1 happy word', () => {
+  it('should return with HAPPY as there is 1 happy word', () => {
     const result = filterFunction('I am delighted')
-    expect(result).to.equal(true)
+    expect(result.happyOrSad).to.equal('happy')
   })
 
-  it('should return with true as there is 1 sad word', () => {
+  it('should return with SAD as there is 1 sad word', () => {
     const result = filterFunction('I feel such sorrow')
-    expect(result).to.equal(false)
+    expect(result.happyOrSad).to.equal('sad')
   })
 
-  it('should return with unknown as there are equal sad and unhappy words', () => {
+  it('should return with NULL as there are equal sad and happy words', () => {
     const result = filterFunction(
       'I am delight. I am joy. I am not miserable or sad. '
     )
-    expect(result).to.equal(null)
+    expect(result.happyOrSad).to.equal(null)
+  })
+
+  it('should return with NULL as there are equal sad and happy words', () => {
+    const result = filterFunction(
+      'I am delight. I am joy. I am not miserable or sad. '
+    )
+    expect(result.numericalValue).to.equal(null)
+  })
+
+  it('should return with 2/3 as there are 2 valid sad words, and 1 valid happy word', () => {
+    const result = filterFunction(
+      'I am delight, delighte, glad, joy, joyful. I am not disappointed, miserable'
+    )
+    expect(result.numericalValue).to.equal((2 / 3) * 100)
   })
 })
