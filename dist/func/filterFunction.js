@@ -33,26 +33,29 @@ function filterFunction(userInput) {
     // handling ratio calculation if 0 or only 1 word is provided
     if (countHappyValues === 1 && countSadValues === 0) {
         returnableObject.happyOrSad = 'happy';
-        returnableObject.numericalValue = countHappyValues / countSadValues;
+        returnableObject.numericalValue = 100;
         return returnableObject;
     }
     else if (countHappyValues === 0 && countSadValues === 0) {
+        returnableObject.numericalValue = null;
         return returnableObject;
     }
     else if (countHappyValues === 0 && countSadValues === 1) {
         returnableObject.happyOrSad = 'sad';
-        returnableObject.numericalValue = countSadValues / countHappyValues;
+        returnableObject.numericalValue = 100;
         return returnableObject;
     }
     // handling all other cases where words are provided
     if (countHappyValues / countSadValues >= 1.5) {
         returnableObject.happyOrSad = 'happy';
-        returnableObject.numericalValue = countHappyValues / countSadValues;
+        returnableObject.numericalValue =
+            (countHappyValues / (countHappyValues + countSadValues)) * 100;
         return returnableObject;
     }
     else if (countHappyValues / countSadValues <= 0.5) {
         returnableObject.happyOrSad = 'sad';
-        returnableObject.numericalValue = countSadValues / countHappyValues;
+        returnableObject.numericalValue =
+            (countSadValues / (countSadValues + countHappyValues)) * 100;
         return returnableObject;
     }
     else {

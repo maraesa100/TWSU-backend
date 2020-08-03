@@ -39,10 +39,10 @@ describe('filterFunction', () => {
     expect(result.numericalValue).to.equal(null)
   })
 
-  it('should return with 2 as there are twice as many sad as happy words, but one contains a typo', () => {
+  it('should return with 2/3 as there are 2 valid sad words, and 1 valid happy word', () => {
     const result = filterFunction(
       'I am delight, delighte, glad, joy, joyful. I am not disappointed, miserable'
     )
-    expect(result.numericalValue).to.equal(2)
+    expect(result.numericalValue).to.equal((2 / 3) * 100)
   })
 })
