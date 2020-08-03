@@ -4,6 +4,9 @@ import express from 'express'
 import * as dotenv from 'dotenv'
 import cors from 'cors'
 import helmet from 'helmet'
+import bodyParser from 'body-parser'
+
+import filterFunction from './func/filterFunction'
 
 // App Vars
 
@@ -23,18 +26,30 @@ app.use(helmet())
 app.use(cors())
 app.use(express.json())
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
 // Server Activation
 
 app.get('/', (req, res) => {
-  res.send('The sedulous hyena ate the antelope!')
+  res.send('Base route - left for debugging')
 })
 
-app.get('/api/v1/todos', (req, res) => {
-  res.status(200).send({
+app.post('/api/v1/wordfilter', (req, res) => {
+  console.log('Endpoint Successfully Hit' + req.body.description)
+
+  if (!req.body.description) {
+    return res.status(400).send({
+      success: 'false',
+      message: 'description is required'
+    })
+  }
+
+  const returnedValue = filterFunction(req.body.description)
+
+  return res.status(201).send({
     success: 'true',
-    message: 'todos retrieved successfully',
-    //   todos: db
-    todos: 'I am a todo'
+    returnedValue
   })
 })
 
