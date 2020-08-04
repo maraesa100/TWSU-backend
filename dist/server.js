@@ -17,10 +17,11 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const filterFunction_1 = __importDefault(require("./func/filterFunction"));
 // App Vars
 dotenv.config();
-if (!process.env.PORT) {
-    process.exit(1);
-}
-const PORT = parseInt(process.env.PORT, 10);
+// if (!process.env.PORT) {
+//   process.exit(1)
+// }
+// const PORT: number = parseInt(process.env.PORT as string, 10)
+let port = process.env.PORT || 5000;
 const app = express_1.default();
 // App Config
 // app.use(helmet())
@@ -46,11 +47,11 @@ app.post('/api/v1/wordfilter', (req, res) => {
         returnedValue
     });
 });
-app.listen(PORT, err => {
-    if (err) {
-        return console.error(err);
-    }
-    return console.log(`server is listening on ${PORT}`);
+app.listen(port => {
+    // if (err) {
+    //   return console.error(err)
+    // }
+    return console.log(`server is listening on ${port}`);
 });
 // Webpack Activation
 //# sourceMappingURL=server.js.map
