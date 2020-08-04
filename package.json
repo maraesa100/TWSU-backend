@@ -4,8 +4,8 @@
   "description": "Tech Will Save Us Backend",
   "main": "server.ts",
   "scripts": {
-    "start": "npm test && tsc && node dist/app.js",
-    "build": "npm test && node dist/app.js && tsc",
+    "start": "ts-node src/config/server.ts",
+    "dev": "nodemon -x ts-node src/config/server.ts",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'"
   },
   "keywords": [
@@ -39,6 +39,6 @@
     "nodemon": "^2.0.4",
     "ts-node": "^8.10.2",
     "tslint": "^5.12.1",
-    "typescript": "^3.3.3"
+    "typescript": "^3.9.7"
   }
 }
