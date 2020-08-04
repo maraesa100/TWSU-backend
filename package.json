@@ -7,8 +7,8 @@
   "description": "Tech Will Save Us Backend",
   "main": "server.ts",
   "scripts": {
-    "start": "npm test && tsc && node dist/app.js",
-    "build": "npm test && node dist/app.js && tsc",
+    "start": "npm test && tsc && node dist/server.js",
+    "build": "npm test && node dist/server.js && tsc",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'"
   },
   "keywords": [
