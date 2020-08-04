@@ -3,24 +3,17 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const dotenv = __importStar(require("dotenv"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const filterFunction_1 = __importDefault(require("./func/filterFunction"));
 // App Vars
-dotenv.config();
-if (!process.env.PORT) {
-    process.exit(1);
-}
-const PORT = parseInt(process.env.PORT, 10);
+// dotenv.config()
+// if (!process.env.PORT) {
+//   process.exit(1)
+// }
+// const PORT: number = parseInt(process.env.PORT as string, 10)
+let PORT = process.env.PORT || 5000;
 const app = express_1.default();
 // App Config
 // app.use(helmet())
