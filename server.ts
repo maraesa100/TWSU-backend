@@ -12,19 +12,18 @@ import filterFunction from './func/filterFunction'
 
 dotenv.config()
 
-// if (!process.env.PORT) {
-//   process.exit(1)
-// }
+if (!process.env.PORT) {
+  process.exit(1)
+}
 
-// const PORT: number = parseInt(process.env.PORT as string, 10)
-let port = process.env.PORT || 5000
+const PORT: string | number = process.env.PORT || 5000
 
 const app = express()
 
 // App Config
 
-// app.use(helmet())
-// app.use(cors())
+app.use(helmet())
+app.use(cors())
 app.use(express.json())
 
 app.use(bodyParser.json())
@@ -54,11 +53,6 @@ app.post('/api/v1/wordfilter', (req, res) => {
   })
 })
 
-app.listen(port => {
-  // if (err) {
-  //   return console.error(err)
-  // }
-  return console.log(`server is listening on ${port}`)
-})
+app.listen(PORT, () => console.log(`hosting @${PORT}`))
 
 // Webpack Activation
