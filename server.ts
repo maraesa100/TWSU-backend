@@ -31,8 +31,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // Server Activation
 
-app.get('/', (req, res) => {
-  res.send('Base route - left for debugging')
+app.use('*', (req, res) => {
+  res.send('<h1>Welcome to your simple server! Awesome right</h1>')
 })
 
 app.post('/api/v1/wordfilter', (req, res) => {
