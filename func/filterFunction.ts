@@ -1,6 +1,5 @@
 import happyValues from '../db/db-happy'
 import sadValues from '../db/db-sad'
-import { KeyObjectType } from 'crypto'
 
 // The following function accepts a string, strips it, and turns it into an array
 // It then determines whether the sentences in the string make it 'happy' or 'sad'
