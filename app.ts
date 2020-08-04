@@ -16,7 +16,7 @@ if (!process.env.PORT) {
   process.exit(1)
 }
 
-const PORT: string | number = process.env.PORT || 5000
+const PORT: number = parseInt(process.env.PORT as string, 10)
 
 const app = express()
 
@@ -31,8 +31,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // Server Activation
 
-app.use('*', (req, res) => {
-  res.send('<h1>Welcome to your simple server! Awesome right</h1>')
+app.get('/', (req, res) => {
+  res.send('Base route - left for debugging')
 })
 
 app.post('/api/v1/wordfilter', (req, res) => {
@@ -53,6 +53,11 @@ app.post('/api/v1/wordfilter', (req, res) => {
   })
 })
 
-app.listen(PORT, () => console.log(`hosting @${PORT}`))
+app.listen(PORT, err => {
+  if (err) {
+    return console.error(err)
+  }
+  return console.log(`server is listening on ${PORT}`)
+})
 
 // Webpack Activation
