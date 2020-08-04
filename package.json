@@ -1,15 +1,11 @@
 {
   "name": "twsu-backend",
   "version": "1.0.0",
-  "engines": {
-    "node": "12.16.1"
-  },
   "description": "Tech Will Save Us Backend",
   "main": "server.ts",
   "scripts": {
-    "start": "npm test && ts-node server.ts",
-    "dev": "nodemon -x ts-node server.ts",
-    "build": "npm test && node dist/server.js && tsc",
+    "start": "npm test && tsc && node dist/app.js",
+    "build": "npm test && node dist/app.js && tsc",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'"
   },
   "keywords": [
