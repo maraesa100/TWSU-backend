@@ -13,8 +13,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv = __importStar(require("dotenv"));
-const cors_1 = __importDefault(require("cors"));
-const helmet_1 = __importDefault(require("helmet"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const filterFunction_1 = __importDefault(require("./func/filterFunction"));
 // App Vars
@@ -25,8 +23,8 @@ if (!process.env.PORT) {
 const PORT = parseInt(process.env.PORT, 10);
 const app = express_1.default();
 // App Config
-app.use(helmet_1.default());
-app.use(cors_1.default());
+// app.use(helmet())
+// app.use(cors())
 app.use(express_1.default.json());
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
