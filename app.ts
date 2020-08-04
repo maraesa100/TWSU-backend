@@ -10,13 +10,7 @@ import filterFunction from './func/filterFunction'
 
 // App Vars
 
-dotenv.config()
-
-if (!process.env.PORT) {
-  process.exit(1)
-}
-
-const PORT: number = parseInt(process.env.PORT as string, 10)
+// dotenv.config()
 
 const app = express()
 
@@ -53,11 +47,12 @@ app.post('/api/v1/wordfilter', (req, res) => {
   })
 })
 
-app.listen(PORT, err => {
-  if (err) {
-    return console.error(err)
-  }
-  return console.log(`server is listening on ${PORT}`)
+app.listen(process.env.PORT || 5000, function() {
+  console.log(
+    'Express server listening on port %d in %s mode',
+    this.address().port,
+    app.settings.env
+  )
 })
 
 // Webpack Activation
