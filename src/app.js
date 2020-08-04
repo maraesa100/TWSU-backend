@@ -22,7 +22,7 @@ const dotenv = __importStar(require('dotenv'))
 const cors_1 = __importDefault(require('cors'))
 const helmet_1 = __importDefault(require('helmet'))
 const body_parser_1 = __importDefault(require('body-parser'))
-const filterFunction_1 = __importDefault(require('../func/filterFunction'))
+const filterFunction_1 = __importDefault(require('../dist/func/filterFunction'))
 // App Vars
 dotenv.config()
 if (!process.env.PORT) {

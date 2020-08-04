@@ -6,7 +6,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import bodyParser from 'body-parser'
 
-import filterFunction from './func/filterFunction'
+import filterFunction from '../../func/filterFunction'
 
 // App Vars
 
