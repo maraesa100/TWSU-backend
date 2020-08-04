@@ -1,0 +1,6 @@
+{
+  "name": "TWSU Backend",
+  "description": "TWSU Backend",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "image": "heroku/nodejs"
+}
