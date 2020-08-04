@@ -19,7 +19,10 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const filterFunction_1 = __importDefault(require("./func/filterFunction"));
 // App Vars
 dotenv.config();
-const PORT = process.env.PORT || 5000;
+if (!process.env.PORT) {
+    process.exit(1);
+}
+const PORT = parseInt(process.env.PORT, 10);
 const app = express_1.default();
 // App Config
 app.use(helmet_1.default());
@@ -28,9 +31,6 @@ app.use(express_1.default.json());
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 // Server Activation
-app.use('*', (req, res) => {
-    res.send('<h1>Welcome to your simple server! Awesome right</h1>');
-});
 app.get('/', (req, res) => {
     res.send('Base route - left for debugging');
 });
@@ -48,6 +48,11 @@ app.post('/api/v1/wordfilter', (req, res) => {
         returnedValue
     });
 });
-app.listen(PORT, () => console.log(`hosting @${PORT}`));
+app.listen(PORT, err => {
+    if (err) {
+        return console.error(err);
+    }
+    return console.log(`server is listening on ${PORT}`);
+});
 // Webpack Activation
 //# sourceMappingURL=app.js.map
